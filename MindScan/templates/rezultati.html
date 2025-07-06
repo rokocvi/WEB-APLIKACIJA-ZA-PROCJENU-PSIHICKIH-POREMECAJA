@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Rezultati testa | MentalHealth App{% endblock %}
+
+{% block content %}
+<div class="result-box">
+    <h2>Rezultati vašeg testa</h2>
+    <!--<p><strong>Ukupni broj bodova:</strong> {{ rezultat }}/90</p>-->
+    <p><strong>Procjena:</strong> {{ stanje }}</p>
+    <h3>Preporuka:</h3>
+    <p>{{ preporuka }}</p>
+
+    {% if postotak %}
+      <!--   <p> Model je ovu procjenu odredio s točnošću od {{ postotak }}%.</p>-->
+    <a href="{% url 'testovi' %}" class="btn-test-yourself">Ispuni novi test</a>
+    {% endif %}
+</div>
+{% endblock %}

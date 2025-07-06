@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Moj profil - Korisnik{% endblock %}
+
+{% block content %}
+<div class="profile-box">
+    <h2 class="profile-title">Profil korisnika</h2>
+
+    <div class="profile-info">
+        <p><strong>Korisničko ime:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p>Ovo je osnovni korisnički profil bez dodatnih medicinskih podataka.</p>
+    </div>
+
+    <div class="button-container">
+        <a href="{% url 'uredi_profil' %}" class="btn-edit">Uredi profil</a>
+        <a href="{% url 'rezultati_testa' %}" class="btn-test-yourself" style="margin-left: 10px;">Pregledaj rezultate testa</a>
+    </div>
+</div>
+{% endblock %}

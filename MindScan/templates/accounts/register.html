@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4 p-md-5">
+          <h3 class="text-center mb-4 fw-bold text-primary">Registracija</h3>
+
+          <form method="POST" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="mb-4" style="display: flex; flex-direction: column;">
+                <label for="{{ field.id_for_label }}" class="form-label fw-semibold text-muted mb-1">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small mt-1">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            <div id="lijecnik-podaci" class="border rounded-3 p-3 mb-4" style="display: none; background-color: #f8f9fa;">
+              <h5 class="mb-3 fw-semibold text-secondary">Podaci za liječnike</h5>
+              {% for field in lijecnik_form %}
+                <div class="mb-3" style="display: flex; flex-direction: column;">
+                  <label for="{{ field.id_for_label }}" class="form-label fw-semibold text-muted mb-1">{{ field.label }}</label>
+                  {{ field }}
+                  {% if field.errors %}
+                    <div class="text-danger small mt-1">{{ field.errors }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg w-100 fw-semibold shadow-sm">Registriraj se</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const userTypeRadios = document.querySelectorAll('input[name="user_type"]');
+    const lijecnikPodaci = document.getElementById('lijecnik-podaci');
+
+    function toggleLijecnikPodaci() {
+      let show = false;
+      userTypeRadios.forEach(radio => {
+        if (radio.checked && radio.value === 'lijecnik') {
+          show = true;
+        }
+      });
+      lijecnikPodaci.style.display = show ? 'block' : 'none';
+    }
+
+    userTypeRadios.forEach(radio => {
+      radio.addEventListener('change', toggleLijecnikPodaci);
+    });
+
+    toggleLijecnikPodaci();
+  });
+</script>
+
+{% endblock %}

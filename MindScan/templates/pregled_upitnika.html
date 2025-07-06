@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4">Pregled upitnika za <strong>{{ test.user.username }}</strong></h2>
+  <p><strong>Datum testa:</strong> {{ test.datum|date:"d.m.Y H:i" }}</p>
+  <p><strong>Predikcija:</strong> {{ test.predikcija }}</p>
+
+  <div class="table-responsive mt-4">
+    <table class="table table-striped table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Pitanje</th>
+          <th scope="col" style="width: 150px;">Odgovor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pitanje, odgovor in pitanja_i_odgovori %}
+        <tr>
+          <td>{{ pitanje }}</td>
+          <td><span class="badge 
+            {% if odgovor == "Nikada" %}bg-success
+            {% elif odgovor == "Rijetko" %}bg-info
+            {% elif odgovor == "Često" %}bg-warning text-dark
+            {% elif odgovor == "Gotovo stalno" %}bg-danger
+            {% else %}bg-secondary
+            {% endif %}">
+            {{ odgovor }}
+          </span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <a href="{% url 'pronadi_klijente' %}" class="btn btn-primary mt-3">Nazad na popis pacijenata</a>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="klijenti-container">
+    <h2 class="klijenti-title">Klijenti sa psihičkim poremećajima</h2>
+       
+    
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if klijenti %}
+      <div class="klijenti-table-wrapper">
+        <table class="klijenti-table">
+          <thead>
+            <tr>
+              <th>Korisničko ime</th>
+              <th>Predikcija</th>
+              <th>Datum testa</th>
+              <th>Akcija</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for test in klijenti %}
+              <tr>
+                <td>{{ test.user.username }}</td>
+                <td>{{ test.predikcija }}</td>
+                <td>{{ test.datum|date:"d.m.Y H:i" }}</td>
+                <td>
+                  <form method="post" action="{% url 'kontaktiraj_klijenta' test.user.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="klijenti-button" style="margin-right: 15px;">Kontaktiraj klijenta</button>
+                  </form>
+                  <a href="{% url 'pregled_upitnika' test.id %}" class="klijenti-button pregledaj-button" style="text-decoration: none; padding: 7px 15px; background-color: #007bff; color: white; border-radius: 4px;">Pregledaj upitnik</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="klijenti-empty">Nema klijenata sa poremećajima.</p>
+    {% endif %}
+  </div>
+{% endblock %}

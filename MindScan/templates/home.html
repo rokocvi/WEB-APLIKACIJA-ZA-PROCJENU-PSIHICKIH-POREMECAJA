@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Početna | MentalHealth App{% endblock %}
+
+{% block content %}
+<div class="disorder-cards">
+
+    <div class="disorder-card">
+        <h4>Anksioznost</h4>
+        <p>Stalni osjećaj tjeskobe, nervoze ili straha koji utječe na svakodnevni život.</p>
+        <a href="{% url 'anksioznost' %}" class="btn-learn-more">Saznaj više</a>
+    </div>
+
+    <div class="disorder-card">
+        <h4>Depresija</h4>
+        <p>Stanje dugotrajne tuge, bezvoljnosti i gubitka interesa za uobičajene aktivnosti.</p>
+        <a href="{% url 'depresija' %}" class="btn-learn-more">Saznaj više</a>
+    </div>
+
+    <div class="disorder-card">
+        <h4>Stres</h4>
+        <p>Emocionalni ili fizički pritisak izazvan zahtjevima ili promjenama u životu.</p>
+        <a href="{% url 'stres' %}" class="btn-learn-more">Saznaj više</a>
+    </div>
+
+    <div class="disorder-card">
+        <h4>ADHD</h4>
+        <p>ADHD, ili poremećaj pažnje i hiperaktivnosti, je neurorazvojni poremećaj koji se očituje simptomima nepažnje, hiperaktivnosti i impulzivnosti,. </p>
+        <a href="{% url 'adhd' %}" class="btn-learn-more">Saznaj više</a>
+    </div>
+
+    <div class="disorder-card">
+        <h4>Bipolarni poremećaj</h4>
+        <p>Poremećaj raspoloženja koji se karakterizira ekstremnim promjenama raspoloženja</p>
+        <a href="{% url 'kvaliteta' %}" class="btn-learn-more">Saznaj više</a>
+    </div>
+{% if not je_li_lijecnik %}
+    <div class="help-section">
+    <h3>Trebaš li pomoć?</h3>
+    <p>
+        Nisi siguran/na prepoznaješ li simptome? Nisi sam/a. Mentalno zdravlje je važno, a prvi korak je prepoznavanje mogućih znakova.
+        Ispuni kratak <strong>psihološki upitnik</strong> i saznaj postoji li potreba za dodatnom podrškom.
+    </p>
+
+    {% else %}
+     <div class="help-section">
+    <h3>Pronađi svoje klijente te im pruži pomoć odma.</h3>
+    <p>Pogledaj koji klijenti trebaju psihološku pomoć, kontaktiraj ih te preporuči im kako da se riješe psihičkih smetnji.</p>
+{% endif %}
+{% if user.is_authenticated %}
+    {% if je_li_lijecnik %}
+        <a href="{% url 'pronadi_klijente' %}" class="btn-test-yourself">Pronađi klijente</a>
+    {% else %}
+        <a href="{% url 'testovi' %}" class="btn-test-yourself">Testiraj se sada</a>
+    {% endif %}
+{% else %}
+    <a href="{% url 'login' %}?next={% url 'testovi' %}" class="btn-test-yourself">Testiraj se sada</a>
+{% endif %}
+
+
+
+</div>
+
+</div>
+{% endblock %}
+

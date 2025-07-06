@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block title %}Testiraj se | MentalHealth App{% endblock %}
+
+{% block content %}
+<h2 class="mb-5 text-center fw-bold text-primary">Psihološki testovi</h2>
+<p class="mb-5 text-center fs-5 text-secondary">Ovdje možete ispuniti kratak upitnik za procjenu vašeg mentalnog zdravlja.</p>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {% for i in range_30 %}
+    <div class="form-section mb-4 p-4 rounded-4 shadow-sm" style="background-color: #ffffff; border: 1px solid #dee2e6;">
+        <h5 class="mb-3 fw-semibold" style="color: #343a40;">{{ i }}. {{ questions|get_item:i }}</h5>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 1rem;">
+            <label style="cursor: pointer; user-select: none; padding: 6px 12px; border-radius: 6px; transition: background-color 0.2s;">
+                <input type="radio" name="q{{ i }}" value="0" required style="margin-right: 10px;">
+                Nikada
+            </label>
+            <label style="cursor: pointer; user-select: none; padding: 6px 12px; border-radius: 6px; transition: background-color 0.2s;">
+                <input type="radio" name="q{{ i }}" value="1" style="margin-right: 10px;">
+                Rijetko
+            </label>
+            <label style="cursor: pointer; user-select: none; padding: 6px 12px; border-radius: 6px; transition: background-color 0.2s;">
+                <input type="radio" name="q{{ i }}" value="2" style="margin-right: 10px;">
+                Često
+            </label>
+            <label style="cursor: pointer; user-select: none; padding: 6px 12px; border-radius: 6px; transition: background-color 0.2s;">
+                <input type="radio" name="q{{ i }}" value="3" style="margin-right: 10px;">
+                Gotovo stalno
+            </label>
+        </div>
+    </div>
+    {% endfor %}
+
+    <button type="submit"
+        style="background-color: #0d6efd;
+               color: white;
+               font-size: 1.25rem;
+               font-weight: 600;
+               padding: 0.75rem 1.25rem;
+               border: none;
+               border-radius: 0.5rem;
+               box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+               width: 100%;
+               margin-top: 2rem;
+               margin-bottom: 2rem;
+               transition: background-color 0.3s ease, transform 0.1s ease;"
+        onmouseover="this.style.backgroundColor='#0b5ed7'"
+        onmouseout="this.style.backgroundColor='#0d6efd'"
+        onmousedown="this.style.transform='scale(0.98)'"
+        onmouseup="this.style.transform='scale(1)'">
+    📩 Pošalji odgovore
+</button>
+</form>
+
+<script>
+    // Dodaj efekt hover na labelu radio inputa (čisto za user experience)
+    document.querySelectorAll('label').forEach(label => {
+        label.addEventListener('mouseenter', () => {
+            label.style.backgroundColor = '#e9f0ff';
+        });
+        label.addEventListener('mouseleave', () => {
+            label.style.backgroundColor = '';
+        });
+    });
+</script>
+{% endblock %}

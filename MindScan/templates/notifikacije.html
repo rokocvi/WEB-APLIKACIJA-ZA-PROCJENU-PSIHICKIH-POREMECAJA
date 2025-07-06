@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Notifikacije{% endblock %}
+
+{% block content %}
+<h2>Notifikacije</h2>
+
+{% if notifikacije %}
+  <div class="notification-list">
+    {% for notif in notifikacije %}
+      <div class="notification-item">
+        <div class="notification-message">{{ notif.poruka }}</div>
+        <div class="notification-date">{{ notif.datum|date:"d.m.Y H:i" }}</div>
+        <div class="notification-action">
+          {% if user.is_lijecnik %}
+            {% if notif.lijecnik %}
+              <a href="{% url 'chat_s_klijentom' notif.lijecnik.id %}" class="btn">Otvori chat s korisnikom</a>
+            {% endif %}
+          {% else %}
+            {% if notif.lijecnik %}
+              <a href="{% url 'chat_s_lijecnikom' notif.lijecnik.id %}" class="btn">Stupi u kontakt s liječnikom</a>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>Nemate novih notifikacija.</p>
+{% endif %}
+{% endblock %}

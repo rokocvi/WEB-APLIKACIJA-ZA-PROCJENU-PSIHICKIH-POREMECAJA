@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">
+    Razgovor s
+    {% if request.user.lijecnik %}
+      pacijentom <strong>{{ korisnik.username }}</strong>
+    {% else %}
+      liječnikom <strong>{{ lijecnik.username }}</strong>
+    {% endif %}
+  </h2>
+
+  <div class="card">
+    <div class="card-body overflow-auto" style="max-height: 60vh;">
+      {% for poruka in poruke %}
+        {% if poruka.posiljalac == request.user %}
+          <div class="d-flex justify-content-end mb-3">
+            <div class="bg-primary text-white p-2 rounded" style="max-width: 75%;">
+              <small class="text-light">{{ poruka.posiljalac.username }}</small>
+              <div>{{ poruka.tekst }}</div>
+              <small class="d-block text-end">{{ poruka.vreme|date:"d.m.Y H:i" }}</small>
+            </div>
+          </div>
+        {% else %}
+          <div class="d-flex justify-content-start mb-3">
+            <div class="bg-light p-2 rounded" style="max-width: 75%; border: 1px solid #ddd;">
+              <small class="text-muted">{{ poruka.posiljalac.username }}</small>
+              <div>{{ poruka.tekst }}</div>
+              <small class="d-block text-start text-muted">{{ poruka.vreme|date:"d.m.Y H:i" }}</small>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="input-group">
+      <textarea name="poruka" class="form-control" placeholder="Unesite poruku..." rows="2" required></textarea>
+      <button class="btn btn-success" type="submit">Pošalji</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

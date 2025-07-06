@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5" style="max-width: 600px;">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title mb-4">Uredi profil</h2>
+      <form method="post" novalidate>
+          {% csrf_token %}
+          
+          <div class="mb-3">
+              <label for="id_username" class="form-label">Korisničko ime</label>
+              <input type="text" name="username" class="form-control" id="id_username" value="{{ user_form.username.value|default_if_none:'' }}">
+              {% if user_form.username.errors %}
+                <div class="text-danger small mt-1">{{ user_form.username.errors.as_text }}</div>
+              {% endif %}
+          </div>
+          
+          <div class="mb-3">
+              <label for="id_email" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" id="id_email" value="{{ user_form.email.value|default_if_none:'' }}">
+              {% if user_form.email.errors %}
+                <div class="text-danger small mt-1">{{ user_form.email.errors.as_text }}</div>
+              {% endif %}
+          </div>
+
+          <div class="mb-3">
+              <label for="id_first_name" class="form-label">Ime</label>
+              <input type="text" name="first_name" class="form-control" id="id_first_name" value="{{ user_form.first_name.value|default_if_none:'' }}">
+              {% if user_form.first_name.errors %}
+                <div class="text-danger small mt-1">{{ user_form.first_name.errors.as_text }}</div>
+              {% endif %}
+          </div>
+
+          <div class="mb-3">
+              <label for="id_last_name" class="form-label">Prezime</label>
+              <input type="text" name="last_name" class="form-control" id="id_last_name" value="{{ user_form.last_name.value|default_if_none:'' }}">
+              {% if user_form.last_name.errors %}
+                <div class="text-danger small mt-1">{{ user_form.last_name.errors.as_text }}</div>
+              {% endif %}
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Spremi promjene</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

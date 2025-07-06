@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4 p-md-5">
+          <h3 class="text-center mb-4 fw-bold text-primary">Prijava</h3>
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="mb-4">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small mt-1">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+            <button type="submit" style="
+                background-color: #0d6efd; 
+                color: white; 
+                border: none; 
+                padding: 0.5rem 1rem; 
+                border-radius: 0.25rem; 
+                cursor: pointer; 
+                display: block; 
+                margin: 0 auto;
+                font-weight: 600;
+                width: 100%;
+              ">
+              Prijavi se
+            </button>
+          </form>
+
+          <p class="mt-4 text-center small text-secondary">
+            Nemaš račun? <a href="{% url 'register' %}">Registriraj se</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

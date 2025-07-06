@@ -1,0 +1,631 @@
+/* Reset osnovnih margina i paddinga */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Osnovni font i boje */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f8fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header stil */
+header {
+    background-color: #3b82f6; /* svijetlo plava */
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* Navigacija */
+/* Navigacija kao horizontalna lista bez točkica */
+nav {
+    margin-top: 15px;
+}
+
+/* Ukloni točkice i marginu/padding sa liste */
+nav ul {
+    list-style: none;       /* uklanja točkice */
+    padding: 0;
+    margin: 0;
+    display: flex;          /* stavlja stavke u red */
+    gap: 15px;              /* razmak između gumbova/linkova */
+    justify-content: center; /* centrira nav */
+    align-items: center;
+}
+
+/* Stil za stavke liste */
+nav ul li {
+    margin: 0;
+}
+
+/* Linkovi i gumbi jedan do drugog */
+nav a, nav button {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover efekt */
+nav a:hover, nav button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Za logout button u formi */
+form button {
+    color: white;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Stil za sekciju s opisom na home stranici */
+main section {
+    max-width: 800px;         /* širina teksta za lakše čitanje */
+    margin: 30px auto;        /* centriranje sa gornjom i donjom marginom */
+    padding: 20px 30px;
+    background-color: #f9f9f9; /* svijetla pozadina */
+    border-radius: 10px;      /* zaobljeni rubovi */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* blaga sjena za dubinu */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Naslov sekcije */
+main section h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 8px;
+}
+
+/* Paragraf */
+main section p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+/* Opcionalno: malo margine između elemenata ako imaš više paragrafa */
+main section p + p {
+    margin-top: 1em;
+}
+ /* Stil za gumb Započni procjenu */
+.btn-assessment {
+    display: inline-block;
+    background-color: #2980b9;      /* lijepa plava boja */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;          /* ako je link */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(41, 128, 185, 0.4);
+    user-select: none;
+}
+
+.btn-assessment:hover,
+.btn-assessment:focus {
+    background-color: #1c5980;      /* tamnija plava na hover */
+    box-shadow: 0 6px 10px rgba(28, 89, 128, 0.6);
+    outline: none;
+}
+
+.btn-assessment:active {
+    background-color: #145374;
+    box-shadow: 0 3px 5px rgba(20, 83, 116, 0.7);
+    transform: translateY(2px);
+}
+
+/* Flex kontejner za kartice */
+.disorder-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Pojedinačne kartice */
+.disorder-card {
+    background-color: #ffffff;
+    color: #2c3e50;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    font-weight: 500;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.disorder-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+ .disorder-card h4 {
+    margin-bottom: 10px;
+    color: #2980b9;
+    font-size: 1.2rem;
+}
+
+.disorder-card p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #555;
+}
+ .btn-learn-more {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #10b981; /* zelena */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 6px rgba(16, 185, 129, 0.4);
+}
+
+.btn-learn-more:hover {
+    background-color: #059669; /* tamnija zelena */
+    box-shadow: 0 4px 8px rgba(5, 150, 105, 0.5);
+}
+
+/* Stil za detaljne članke o poremećajima */
+.article-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.article-container h1,
+.article-container h2,
+.article-container h3 {
+    color: #2980b9;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.article-container p {
+    margin-bottom: 20px;
+}
+
+.article-container ul {
+    list-style-type: disc;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.article-container li {
+    margin-bottom: 8px;
+}
+
+.article-container strong {
+    color: #1c5980;
+}
+
+.article-container blockquote {
+    border-left: 4px solid #2980b9;
+    background-color: #f0f7ff;
+    padding: 10px 20px;
+    font-style: italic;
+    margin: 20px 0;
+    color: #555;
+}
+
+.article-container .symptom-group {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-left: 5px solid #2980b9;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+ .help-section {
+    background-color: #f3f4f6;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.help-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.help-section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.btn-test-yourself {
+    background-color: #4f46e5;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-test-yourself:hover {
+    background-color: #4338ca;
+}
+
+
+.profile-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 26px;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-edit {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-edit, .btn-test-yourself {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover, .btn-test-yourself:hover {
+    background-color: #45a049;
+}
+
+.result-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px 30px;
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    background-color: #f9fff9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.result-title {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.score {
+    color: #388e3c;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.assessment {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.btn-test-yourself {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-test-yourself:hover {
+    background-color: #388e3c;
+}
+
+.notification-list {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.notification-item {
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
+}
+
+.notification-message {
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.notification-date {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.notification-action .btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.notification-action .btn:hover {
+  background-color: #1e40af;
+}
+
+
+
+/* Container za chat */
+.chat-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px 20px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  height: 400px;
+  overflow-y: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Naslov chat-a */
+.chat-title {
+  max-width: 600px;
+  margin: 20px auto 10px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Pojedinačna poruka */
+.chat-message {
+  max-width: 75%;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  position: relative;
+}
+
+/* Ime pošiljatelja */
+.chat-sender {
+  display: block;
+  margin-bottom: 6px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Poruke koje šalje korisnik */
+.chat-sent {
+  background-color: #2563eb;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+}
+
+/* Poruke koje prima korisnik */
+.chat-received {
+  background-color: #f3f4f6;
+  color: #333;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Vrijeme poruke */
+.chat-timestamp {
+  display: block;
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 6px;
+  text-align: right;
+}
+
+/* Forma za slanje poruke */
+.chat-form {
+  max-width: 600px;
+  margin: 15px auto;
+  display: flex;
+  gap: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Textarea */
+.chat-textarea {
+  flex-grow: 1;
+  resize: none;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 70px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.chat-textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
+/* Gumb za slanje */
+.chat-submit-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-submit-btn:hover {
+  background-color: #1e40af;
+  box-shadow: 0 4px 10px rgba(30, 64, 175, 0.6);
+}
+
+.chat-submit-btn:active {
+  background-color: #145374;
+  box-shadow: 0 2px 6px rgba(20, 83, 116, 0.7);
+  transform: translateY(2px);
+}
+
+
+/* === KLijenti stranica === */
+.klijenti-container {
+  padding: 30px;
+  background-color: #f9f9f9;
+}
+
+.klijenti-title {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.klijenti-table-wrapper {
+  overflow-x: auto;
+}
+
+.klijenti-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.klijenti-table th,
+.klijenti-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.klijenti-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.klijenti-button {
+  padding: 8px 14px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.klijenti-button:hover {
+  background-color: #45a049;
+}
+
+.klijenti-empty {
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}

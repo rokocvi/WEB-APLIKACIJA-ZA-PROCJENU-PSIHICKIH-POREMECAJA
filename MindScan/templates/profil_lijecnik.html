@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Moj profil - Liječnik{% endblock %}
+
+{% block content %}
+<div class="profile-box">
+    <h2 class="profile-title">Profil liječnika</h2>
+
+    <div class="profile-info">
+        <p><strong>Korisničko ime:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Ime:</strong> {{ user.lijecnik.ime }}</p>
+        <p><strong>Prezime:</strong> {{ user.lijecnik.prezime }}</p>
+        <p><strong>Telefon:</strong> {{ user.lijecnik.telefon }}</p>
+        <p><strong>Stručnost:</strong> {{ user.lijecnik.get_strucnost_display }}</p>
+        <p><strong>Lokacija:</strong> {{ user.lijecnik.lokacija }}</p>
+        <p><strong>Opis:</strong> {{ user.lijecnik.opis|linebreaks }}</p>
+        <p><strong>Dostupnost:</strong> {{ user.lijecnik.dostupnost|yesno:"Da,Ne" }}</p>
+        <p><strong>Verificiran:</strong>
+            {% if user.lijecnik.odobren %}
+                ✅ Da
+            {% else %}
+                ❌ Ne
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="button-container">
+        <a href="{% url 'uredi_profil' %}" class="btn-edit">Uredi profil</a>
+    </div>
+</div>
+{% endblock %}
